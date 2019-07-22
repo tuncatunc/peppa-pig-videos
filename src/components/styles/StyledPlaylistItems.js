@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import React from 'react'
-
 const StyledPlaylistItems =  styled.div`
   padding: 0 20px;
   overflow-y: auto;

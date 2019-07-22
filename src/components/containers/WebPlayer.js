@@ -47,7 +47,7 @@ const WebPlayer = ({ history, location, match }) => {
       const videoId = match.params.activeVideo
       if (videoId) {
         const activeVideoIndex = state.videos.findIndex(
-          video => video.id == videoId
+          video => video.id === videoId
         )
 
         // url: /:activeVideo is a valid active video
@@ -82,7 +82,6 @@ const WebPlayer = ({ history, location, match }) => {
 
   const endCallback = () => {
     console.debug(`Video ended ${match.params.activeVideo}`)
-    const videoId = match.params.activeVideo
     const finishedVideoIndex = state.videos.findIndex(video => video.id)
     const nextVideoIndex = (finishedVideoIndex + 1) % state.videos.length
     //setState(prev => ({...prev, activeVideo: videos[nextVideoIndex]}))

@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-import React from 'react'
-
 const StyledPlaylist = styled.div`
   -webkit-box-flex: 1;
   -ms-flex: 1 1 450px;
