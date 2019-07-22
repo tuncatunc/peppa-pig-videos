@@ -24,21 +24,95 @@ const themeLight = {
   color: "#353535"
 }
 
-const WebPlayer = props => {
+const WebPlayer = ({ history, location, match }) => {
   const videos = JSON.parse(document.querySelector('[name="videos"]').value)
+  const savedState = JSON.parse(localStorage.getItem(`${videos.playlistId}`))
+
   const [state, setState] = useState(
     {
-      videos: videos.playlist,
-      activeVideo: videos.playlist[0],
-      nightMode: true,
-      autoplay: false,
-      playlistId: videos.playlistId
+      videos: savedState ? savedState.videos : videos.playlist,
+      activeVideo: savedState ? savedState.activeVideo : videos.playlist[0],
+      nightMode: savedState ? savedState.nightMode :true,
+      autoplay: savedState ? savedState.autoplay : false,
+      playlistId: savedState ? savedState.playlistId :videos.playlistId
     }
   )
 
-  const endCallback = () => { }
-  const propgressCallback = () => { }
-  const nightModeCallback = () => { }
+  useEffect(() => {
+    localStorage.setItem(`${state.playlistId}`, JSON.stringify({...state}))
+  }, [state])
+
+  useEffect(
+    () => {
+      const videoId = match.params.activeVideo
+      if (videoId) {
+        const activeVideoIndex = state.videos.findIndex(
+          video => video.id == videoId
+        )
+
+        // url: /:activeVideo is a valid active video
+        if (activeVideoIndex !== -1) {
+          setState(
+            prev =>
+              ({
+                ...prev,
+                activeVideo: prev.videos[activeVideoIndex],
+                autoplay: false
+              })
+          )
+        }
+      }
+      else {
+        history.push(
+          {
+            pathname: `/${state.videos[0].id}`,
+            autoplay: false
+          }
+        )
+      }
+    },
+    [
+      history,
+      location.autoplay,
+      match.params.activeVideo,
+      state.activeVideo.id,
+      state.videos,
+    ]
+  )
+
+  const endCallback = () => {
+    console.debug(`Video ended ${match.params.activeVideo}`)
+    const videoId = match.params.activeVideo
+    const finishedVideoIndex = state.videos.findIndex(video => video.id)
+    const nextVideoIndex = (finishedVideoIndex + 1) % state.videos.length
+    //setState(prev => ({...prev, activeVideo: videos[nextVideoIndex]}))
+    history.push(
+      {
+        pathname: `/${state.videos[nextVideoIndex].id}`,
+        autoplay: false
+      }
+    )
+  }
+
+  // After 10 seconds of playing, mark it as played
+  const progressCallback = e => {
+    console.log('Progress...', e)
+    if (e.playedSeconds >= 5) {
+      const videos = state.videos.map(
+        video => (
+          video.id === state.activeVideo.id
+            ? { ...video, played: true }
+            : video)
+      )
+      setState(prev => ({ ...prev, videos }))
+    }
+  }
+
+  const nightModeCallback = () => {
+    setState(
+      prev => ({ ...prev, nightMode: !prev.nightMode })
+    )
+  }
 
   return (
     <ThemeProvider theme={state.nightMode ? theme : themeLight} >
@@ -49,7 +123,7 @@ const WebPlayer = props => {
               active={state.activeVideo}
               autoplay={state.autoplay}
               endCallback={endCallback}
-              propgressCallback={propgressCallback}
+              progressCallback={progressCallback}
             />
             <Playlist
               videos={state.videos}

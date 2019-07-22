@@ -1,7 +1,10 @@
 import React from 'react'
 import StyledPlaylistItems from '../styles/StyledPlaylistItems'
 import PlaylistItem from '../PlaylistItem'
+import withLink from '../hoc/withLink'
 import PropTypes from 'prop-types';
+
+const PlaylistItemWithLink = withLink(PlaylistItem)
 
 const PlaylistItems = ({ videos, active }) => {
   return (
@@ -9,7 +12,7 @@ const PlaylistItems = ({ videos, active }) => {
       {
         videos.map(
           video => (
-            <PlaylistItem
+            <PlaylistItemWithLink
               key={video.id}
               video={video}
               active={video.id === active.id}

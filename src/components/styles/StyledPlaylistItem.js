@@ -22,7 +22,7 @@ const StyledPlaylistItem = styled.div`
   position: relative;
 
   ::before {
-    display: ${props => (props.active || !props.played ? "none" : "block")};
+    display: ${props => (props.played ? "block" : "none")};
     content: "";
     width: 10px;
     min-height: 10px;
