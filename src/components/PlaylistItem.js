@@ -1,10 +1,13 @@
 import React from 'react'
 import StyledPlaylistItem from './styles/StyledPlaylistItem'
 
-const PlaylistItem = ({video, active, played}) => {
+const PlaylistItem = ({ video, active, played }) => {
   return (
     <StyledPlaylistItem active={active} played={played}>
       <div className='web-player__video-nr'>{video.num}</div>
+      <div className='web-player__video-thumb-container'>
+        <img className='web-player__video-thumb' src={`http://img.youtube.com/vi/${video.id}/0.jpg`} />
+      </div>
       <div className='web-player__video-name'>{video.title}</div>
       <div className='web-player__video-time'>{video.duration}</div>
     </StyledPlaylistItem>

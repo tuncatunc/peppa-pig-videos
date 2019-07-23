@@ -40,6 +40,21 @@ const StyledPlaylistItem = styled.div`
     border-right: 2px solid #565656;
   }
 
+  .web-player__video-thumb-container {
+    width: 30px;
+    height: 30px;
+    padding-right: 20px;
+    padding-left: 10px;
+    border-right: 2px solid #565656;
+    object-fit: contain;
+  }
+
+  .web-player__video-thumb {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+
   .web-player__video-name,
   .web-player__video-name a {
     flex-grow: 10; /* default 0 */
