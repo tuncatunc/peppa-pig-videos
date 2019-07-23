@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import Video from '../Video'
 import Playlist from '../containers/Playlist'
 import StyledWebPlayer from '../styles/StyledWebPlayer'
+import playlistData from './PlaylistData'
 
 const theme = {
   bgcolor: "#353535",
@@ -25,7 +26,8 @@ const themeLight = {
 }
 
 const WebPlayer = ({ history, location, match }) => {
-  const videos = JSON.parse(document.querySelector('[name="videos"]').value)
+  //const videos = JSON.parse(document.querySelector('[name="videos"]').value)
+  const videos = playlistData
   const savedState = JSON.parse(localStorage.getItem(`${videos.playlistId}`))
 
   const [state, setState] = useState(
