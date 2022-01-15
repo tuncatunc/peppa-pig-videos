@@ -1,0 +1,28 @@
+{
+  "creators": [
+    [
+      {
+        "address": "CBZ64iKpAbp9hp7cZf3vswDKjghQ9JbLJdfxf2SfJmFX",
+        "share": 0,
+        "verified": true
+      },
+      {
+        "address": "CreatorMSqsKKBc3ChgEBo1D3ZC5zMmVxwqr8SD6w77E",
+        "share": 100,
+        "verified": false
+      }
+    ]
+  ],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://github.com/tuncatunc/peppa-pig-videos/raw/master/Inkedtunca-revealed_LI.jpg"
+      }
+    ]
+  }
+  "image": ""
+  "name": "Updated Secret Tunca#6",
+  "seller_fee_basis_points": 500,
+  "symbol": "ATT",
+  "uri": "https://ipfs.io/ipfs/Qma5DWjGAX8VDwZwxBZPRXgDcxAQLz5eu89vSWAqtbuB6h"
+}
