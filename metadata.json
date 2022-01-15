@@ -1,28 +1,25 @@
 {
-  "creators": [
-    [
-      {
-        "address": "CBZ64iKpAbp9hp7cZf3vswDKjghQ9JbLJdfxf2SfJmFX",
-        "share": 0,
-        "verified": true
-      },
-      {
-        "address": "CreatorMSqsKKBc3ChgEBo1D3ZC5zMmVxwqr8SD6w77E",
-        "share": 100,
-        "verified": false
-      }
-    ]
-  ],
+  "name": "Updated 1",
+  "symbol": "UATT",
+  "image": "https://raw.githubusercontent.com/tuncatunc/peppa-pig-videos/master/Inkedtunca-revealed_LI.jpg",
   "properties": {
     "files": [
       {
-        "uri": "https://raw.githubusercontent.com/tuncatunc/peppa-pig-videos/master/Inkedtunca-revealed_LI.jpg"
+        "uri": "https://raw.githubusercontent.com/tuncatunc/peppa-pig-videos/master/Inkedtunca-revealed_LI.jpg",
+        "type": "image/png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "8WKzDhUMSqsKKBc3ChgEBo1D3ZC5zMmVxwqr8SD6w77E",
+        "share": 100
       }
     ]
-  }
-  "image": ""
-  "name": "Updated Secret Tunca#6",
+  },
+  "description": "",
   "seller_fee_basis_points": 500,
-  "symbol": "ATT",
-  "uri": "https://ipfs.io/ipfs/Qma5DWjGAX8VDwZwxBZPRXgDcxAQLz5eu89vSWAqtbuB6h"
+  "attributes": [
+  ],
+  "collection": {}
 }
